@@ -23,7 +23,7 @@ spec:
     spec: 
       containers:
       - name: mongodb
-        image: gsurendhar/mongodb:v2
+        image: gsurendhar/mongodb:v1
 
 ---
 apiVersion: v1
