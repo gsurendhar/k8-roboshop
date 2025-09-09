@@ -9,7 +9,7 @@ metadata:
     tier: database
 spec:
   replicaset: 1
-  selectors:
+  selector:
     matchLabels:
       component: mongodb
       project: roboshop
@@ -25,3 +25,22 @@ spec:
       - name: mongodb
         image: gsurendhar/mongodb:v2
 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb
+  namespace: roboshop
+  labels:
+    component: mongodb
+    project: roboshop
+    tier: database    
+spec:
+  selector: 
+    component: mongodb
+    project: roboshop
+    tier: database
+  ports:
+    protocol: "TCP"
+    port: 27017
+    targetPort: 27017
