@@ -36,11 +36,12 @@ metadata:
     project: roboshop
     tier: database    
 spec:
+  # These are the labels is use attach pod to service, this should exactly match pod labels then only pods are attached to service
   selector: 
     component: mongodb
     project: roboshop
     tier: database
   ports:
     protocol: "TCP"
-    port: 27017
-    targetPort: 27017
+    port: 27017  # service port
+    targetPort: 27017  # container port
