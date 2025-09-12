@@ -27,3 +27,23 @@ spec:
         envFrom:
         - secretRef:
             name: rabbitmq
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rabbitmq
+  namespace: roboshop
+  labels:
+    component: rabbitmq
+    project: roboshop
+    tier: database    
+spec:
+  # These are the labels is use attach pod to service, this should exactly match pod labels then only pods are attached to service
+  selector: 
+    component: rabbitmq
+    project: roboshop
+    tier: database
+  ports:
+    protocol: "TCP"
+    port: 5672  # service port
+    targetPort: 5672  # container port
